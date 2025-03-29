@@ -47,6 +47,25 @@ func superAdd(numbers ...int) int {
 	return total
 }
 
+func canIDrink(age int) bool {
+	// if안에 변수만들기 가능   ; 구분자
+	if koreanAge := age + 2; koreanAge < 18 {
+		return false
+	}
+	return true
+}
+
+func canIDrinkSwitch(age int) bool {
+	// switch age {
+	switch koreanAge := age + 2; koreanAge {
+	case 10:
+		return false
+	case 18:
+		return true
+	}
+	return false
+}
+
 func main() {
 	fmt.Println(multiply(2, 2))
 
@@ -66,4 +85,7 @@ func main() {
 
 	result := superAdd(1, 2, 3, 4, 5, 6)
 	fmt.Println(result)
+
+	fmt.Println(canIDrink(16))
+	fmt.Println(canIDrinkSwitch(18))
 }
