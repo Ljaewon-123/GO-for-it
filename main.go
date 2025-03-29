@@ -93,6 +93,19 @@ func mapmap() {
 	fmt.Println(jaewon)
 }
 
+type person struct {
+	name    string
+	age     int
+	favFood []string
+}
+
+func Structs() {
+	favFood := []string{"kimchi", "ramen"}
+	// jaewon := person{"jaewon", 18, favFood}
+	jaewon := person{name: "jaewon", age: 18, favFood: favFood}
+	fmt.Println(jaewon)
+}
+
 func main() {
 	fmt.Println(multiply(2, 2))
 
@@ -128,4 +141,5 @@ func main() {
 	mapmap()
 
 	fmt.Println("structs!!")
+	Structs()
 }
