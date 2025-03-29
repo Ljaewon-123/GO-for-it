@@ -66,6 +66,14 @@ func canIDrinkSwitch(age int) bool {
 	return false
 }
 
+func Pointers() {
+	a := 2
+	b := &a
+	// a = 5
+	*b = 20            // b를 이용해서 같은 메모리 주소의 a를 변경가능 (b는 a를 보는 포인터 이기에 가능)
+	fmt.Println(a, *b) // &a, *a   메모리 주소, 주소값
+}
+
 func main() {
 	fmt.Println(multiply(2, 2))
 
@@ -88,4 +96,8 @@ func main() {
 
 	fmt.Println(canIDrink(16))
 	fmt.Println(canIDrinkSwitch(18))
+
+	fmt.Println("Pointer!!")
+
+	Pointers()
 }
