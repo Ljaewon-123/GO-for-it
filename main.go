@@ -74,6 +74,25 @@ func Pointers() {
 	fmt.Println(a, *b) // &a, *a   메모리 주소, 주소값
 }
 
+func array() {
+	// It called Array (크기제한있음)
+	// names := [5]string{"jaewon", "suz", "dal"} // array 크기제한가능
+
+	// It called slice (크기제한 X)
+	names := []string{"jaewon", "suz", "dal"} // 크기제한 X
+	names = append(names, "add name")         // 제한없는 array라면 이런식으로
+	fmt.Println(names)
+}
+
+func mapmap() {
+	jaewon := map[string]string{"name": "jaewon", "age": "12"}
+	for key, value := range jaewon {
+		fmt.Println(key, value)
+	}
+
+	fmt.Println(jaewon)
+}
+
 func main() {
 	fmt.Println(multiply(2, 2))
 
@@ -100,4 +119,13 @@ func main() {
 	fmt.Println("Pointer!!")
 
 	Pointers()
+
+	fmt.Println("array!!")
+
+	array()
+
+	fmt.Println("map!!")
+	mapmap()
+
+	fmt.Println("structs!!")
 }
