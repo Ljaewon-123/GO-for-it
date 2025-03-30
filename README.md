@@ -7,6 +7,6 @@ js 나 python같은 object없음
 constructor method도 없음 
 ex)
 ```
-constructor() 
-__init__
+constructor() // js
+__init__      // python
 ```
