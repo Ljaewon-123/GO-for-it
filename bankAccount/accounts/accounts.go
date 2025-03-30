@@ -1,6 +1,9 @@
 package accounts
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // Account struct
 type Account struct {
@@ -49,5 +52,6 @@ func (a Account) Owner() string {
 
 // struct에서 Go가 자동으로 호출하는 매서드중 하나
 func (a Account) String() string {
-	return "whatever you want"
+	// return "whatever you want"
+	return fmt.Sprint(a.Owner(), "'s account.\nHas: ", a.Balance())
 }
