@@ -10,3 +10,7 @@ ex)
 constructor() // js
 __init__      // python
 ```
+
+
+### Goroutine 
+기본적으로 다른 함수와 동시에 실행시키는 함수
