@@ -1,27 +1,53 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"time"
+	"net/http"
 )
 
-func main() {
-	// sexyCount("nico")
-	// sexyCount("flynn")
-
-	// 매서드 앞 go 라는 명령어로 동시처리
-	go sexyCount("nico")
-	go sexyCount("flynn")
-
-	// goroutines은 main함수가 실행중인 동안만 유효해서 이게 없으면 종료되어버림
-	time.Sleep(time.Second * 5)
+type requestResult struct {
+	url    string
+	status string
 }
 
-func sexyCount(person string) {
-	for i := 0; i < 10; i++ {
-		fmt.Println(person, "is sexy", i)
-		time.Sleep(time.Second)
+var errRequestFailed = errors.New("Request failed")
 
+func main() {
+	results := make(map[string]string)
+	c := make(chan requestResult)
+	urls := []string{
+		"https://www.airbnb.com/",
+		"https://www.google.com/",
+		"https://www.amazon.com/",
+		"https://www.reddit.com/",
+		"https://www.google.com/",
+		"https://soundcloud.com/",
+		"https://www.facebook.com/",
+		"https://www.instagram.com/",
+		"https://academy.nomadcoders.co/",
+	}
+	for _, url := range urls {
+		go hitURL(url, c)
 	}
 
+	for i := 0; i < len(urls); i++ {
+		result := <-c
+		results[result.url] = result.status
+	}
+
+	for url, status := range results {
+		fmt.Println(url, status)
+	}
+}
+
+// c chan<- result # 이채널은 send용으로만 사용가능
+func hitURL(url string, c chan<- requestResult) {
+	fmt.Println("Checking:", url)
+	resp, err := http.Get(url)
+	status := "OK"
+	if err != nil || resp.StatusCode >= 400 {
+		status = "FAILED"
+	}
+	c <- requestResult{url: url, status: status}
 }
