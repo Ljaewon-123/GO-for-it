@@ -14,3 +14,9 @@ __init__      // python
 
 ### Goroutine 
 기본적으로 다른 함수와 동시에 실행시키는 함수
+
+
+go 에서 npm i 같은거
+```sh
+go get github.com/PuerkitoBio/goquery
+```
